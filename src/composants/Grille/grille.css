@@ -1,0 +1,19 @@
+.cell {
+    border: 1px solid black;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.cell.cell--alive {
+    background-color: chartreuse;
+}
+
+.cell.cell--death {
+    background-color: blue;
+}
+
+.Etape {
+    width: 200px;
+    height: 50px;
+}
