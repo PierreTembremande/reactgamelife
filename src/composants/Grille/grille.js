@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./grille.css";
 
 let nbVoisins = 0;
@@ -16,7 +16,13 @@ function verif(grille, x, y) {
 }
 
 export const Grille = ({ length }) => {
+
     const [grille, setGrille] = useState(GenererGrille(length))
+    const [emoji, setEmoji] = useState({
+        vivant: "😁"
+        , mort: "👀"
+    })
+
     const ComportementGrille = (grille) => {
 
         const newGrille = JSON.parse(JSON.stringify(grille));
@@ -54,6 +60,39 @@ export const Grille = ({ length }) => {
         setGrille(newGrille);
     };
 
+    const [cycle, setcycle] = useState(0);
+
+    const nbCycle = () => {
+        setcycle((cycle) => (cycle += 1));
+    }
+
+    const clignotant = () => {
+        const newGrille = JSON.parse(JSON.stringify(grille));
+        newGrille[2][46] = true;
+        newGrille[2][47] = true;
+        newGrille[2][48] = true;
+        setGrille(newGrille);
+    }
+
+    const planeur = () => {
+        const newGrille = JSON.parse(JSON.stringify(grille));
+        newGrille[46][1] = true;
+        newGrille[47][2] = true;
+        newGrille[47][3] = true;
+        newGrille[46][3] = true;
+        newGrille[45][3] = true;
+        setGrille(newGrille);
+    }
+
+    const adapte = (newLength) => {
+        setGrille(GenererGrille(newLength));
+    }
+
+    const vivant = (ajout) => {
+        const newGrille = JSON.parse(JSON.stringify(grille));
+
+    }
+
     return <div>
         {grille.map((line, i) => (
             <div key={i}>
@@ -72,6 +111,26 @@ export const Grille = ({ length }) => {
                 }
             </div >
         ))}
-        <button onClick={() => ComportementGrille(grille)} className="Etape">Voir l'étape suivante</button>
+        <span>
+            <button onClick={() => { ComportementGrille(grille); nbCycle() }} className="Etape">Voir l'étape suivante</button>
+        </span>
+        <span>
+            <button onClick={() => clignotant(grille)} className="Etape">Ajout d'un clignotant</button>
+        </span>
+        <span>
+            <button onClick={() => planeur(grille)} className="Etape">Ajout d'un planeur</button>
+        </span>
+        <h4>Nombre de cycle : {cycle}</h4>
+        < div >
+            <span>
+                < input type="number" name="taille" onChange={({ target }) => adapte(target.valueAsNumber)} ></input >
+            </span>
+            <span>
+                < input type="texte" name="vivant" value={emoji.vivant} onChange={({ target: { value } }) => setEmoji(value)} ></input >
+            </span>
+            <span>
+                < input type="texte" name="mort" value={emoji.mort} onChange={({ target: { value } }) => setEmoji(value)} ></input >
+            </span>
+        </div >
     </div>
 }
