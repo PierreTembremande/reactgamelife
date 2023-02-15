@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Grille, ComportementGrille } from './composants/Grille/grille';
 import Rooot from "./routes/root";
 import Inscription from "./routes/Inscription"
+import List from "./routes/List"
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/SignUp",
     element: <Inscription />
+  },
+  {
+    path: "/Pokemon",
+    element: <List />
   }
 ]);
 
