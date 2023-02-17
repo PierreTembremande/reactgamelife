@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { useState } from 'react';
-import { Grille, ComportementGrille } from './composants/Grille/grille';
-import Rooot from "./routes/root";
+import { Grille } from './composants/Grille/grille';
+import Rooot from "./routes/root.jsx";
 import Inscription from "./routes/Inscription"
 import List from "./routes/List"
 import {

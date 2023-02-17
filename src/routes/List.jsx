@@ -57,7 +57,6 @@ export default function lister() {
                             <th>Nom des pokemons</th>
                             {pokes.slice(0, pokes.length).map((poke) => (
                                 <tr>
-                                    <td>https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png</td>
                                     <td>{poke.name}</td>
                                 </tr>
                             ))}
