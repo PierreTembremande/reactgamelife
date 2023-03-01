@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function lister() {
+export default function Lister() {
 
     const [pokes, SetPokes] = useState([]);
     const [offSet, SetOffSet] = useState(0);
@@ -30,7 +30,7 @@ export default function lister() {
     console.log(offSet)
 
     useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon/?offset=10&limit=1279').then(res => {
+        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1279').then(res => {
             if (res.ok) {
                 res.json().then(data => SetPokes(data.results));
             }
@@ -78,7 +78,7 @@ export default function lister() {
                             </thead>
                             <tbody>
                                 {pokes.slice(offSet, Number(offSet) + Number(limite)).map((poke) => (
-                                    <tr>
+                                    <tr key={poke.name}>
                                         <td>{poke.name}</td>
                                     </tr>
 
@@ -96,7 +96,7 @@ export default function lister() {
                             </thead>
                             <tbody>
                                 {newListe.map((element) => (
-                                    <tr>
+                                    <tr key={poke.name}>
                                         <td>{element.name}</td>
                                     </tr>
 
