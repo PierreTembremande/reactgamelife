@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { force } from "../composants/ForceMdp";
+import { force } from "../composants/ForceMdp.js";
 
 export default function Root() {
 

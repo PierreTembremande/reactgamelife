@@ -56,9 +56,7 @@ export default function lister() {
                         <table>
                             <th>Nom des pokemons</th>
                             {pokes.slice(0, pokes.length).map((poke) => (
-                                <tr>
-                                    <td>{poke.name}</td>
-                                </tr>
+                                <tr>{poke.name}</tr>
                             ))}
                         </table>
                     )}
@@ -68,7 +66,7 @@ export default function lister() {
                             <th>Nom des pokemons</th>
                             {pokes.slice(offSet, Number(offSet) + Number(limite)).map((poke) => (
                                 <tr>
-                                    <td>{poke.name}</td>
+                                    <tr>{poke.name}</tr>
                                 </tr>
                             ))}
                         </table>
@@ -79,7 +77,7 @@ export default function lister() {
                             <th>Nom des pokemons</th>
                             {newListe.map((element) => (
                                 <tr>
-                                    <td>{element.name}</td>
+                                    <tr>{element.name}</tr>
                                 </tr>
                             ))}
                         </table>

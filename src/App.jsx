@@ -3,8 +3,8 @@ import './App.css';
 import { useState } from 'react';
 import { Grille } from './composants/Grille/grille';
 import Rooot from "./routes/root.jsx";
-import Inscription from "./routes/Inscription"
-import List from "./routes/List"
+import Inscription from "./routes/Inscription.jsx"
+import List from "./routes/List.jsx"
 import {
   createBrowserRouter,
   RouterProvider,
