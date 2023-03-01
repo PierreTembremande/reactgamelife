@@ -30,7 +30,7 @@ export default function lister() {
     console.log(offSet)
 
     useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1279').then(res => {
+        fetch('https://pokeapi.co/api/v2/pokemon/?offset=10&limit=1279').then(res => {
             if (res.ok) {
                 res.json().then(data => SetPokes(data.results));
             }
@@ -54,32 +54,54 @@ export default function lister() {
                 <div>
                     {motRecherche === "" && limite === 0 && (
                         <table>
-                            <th>Nom des pokemons</th>
-                            {pokes.slice(0, pokes.length).map((poke) => (
-                                <tr>{poke.name}</tr>
-                            ))}
+                            <thead>
+                                <tr>
+                                    <th>Nom des pokemons</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {pokes.slice(0, pokes.length).map((poke) => (
+                                    <tr key={poke.name}>
+                                        <td>{poke.name}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
                         </table>
                     )}
 
                     {limite != 0 && (
                         <table>
-                            <th>Nom des pokemons</th>
-                            {pokes.slice(offSet, Number(offSet) + Number(limite)).map((poke) => (
+                            <thead>
                                 <tr>
-                                    <tr>{poke.name}</tr>
+                                    <th>Nom des pokemons</th>
                                 </tr>
-                            ))}
+                            </thead>
+                            <tbody>
+                                {pokes.slice(offSet, Number(offSet) + Number(limite)).map((poke) => (
+                                    <tr>
+                                        <td>{poke.name}</td>
+                                    </tr>
+
+                                ))}
+                            </tbody>
                         </table>
                     )}
 
                     {motRecherche != "" && (
                         <table>
-                            <th>Nom des pokemons</th>
-                            {newListe.map((element) => (
+                            <thead>
                                 <tr>
-                                    <tr>{element.name}</tr>
+                                    <th>Nom des pokemons</th>
                                 </tr>
-                            ))}
+                            </thead>
+                            <tbody>
+                                {newListe.map((element) => (
+                                    <tr>
+                                        <td>{element.name}</td>
+                                    </tr>
+
+                                ))}
+                            </tbody>
                         </table>
                     )}
 
