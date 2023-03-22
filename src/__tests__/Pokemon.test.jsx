@@ -1,8 +1,7 @@
-import { render, screen, within, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Lister from '../routes/List';
 import userEvent from '@testing-library/user-event'
-import ReactTestUtils, { act } from 'react-dom/test-utils';
 
 test("apparition de bulbisard", async () => {
     render(<MemoryRouter><Lister /></MemoryRouter>);
@@ -17,7 +16,7 @@ test("clique sur boutton et changement de page", async () => {
 
     await waitFor(async () => {
         await user.type(numero, "10");
-        user.click(screen.getByTestId('Suivant'));
+        user.click(screen.getByRole('button', { name: 'Suivant' }));
         const $10Pokemon = await screen.findAllByRole('cell');
         expect($10Pokemon[0].textContent).toBe("metapod");
     })
