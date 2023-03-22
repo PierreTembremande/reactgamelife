@@ -47,7 +47,7 @@ export default function Lister() {
                 <input type="text" onChange={({ target: { value } }) => { SetMotRecherche(value); update(value) }}></input>
                 <br /><br />
                 <label>Nombre de pokémons à afficher</label>
-                <input type="number" value={limite} onChange={({ target: { value } }) => { SetLimite(value) }}></input>
+                <input data-testid="numero" type="number" value={limite} onChange={({ target: { value } }) => { SetLimite(value) }}></input>
             </div>
 
             {
@@ -110,7 +110,7 @@ export default function Lister() {
 
             <div>
                 <button onClick={pagePrecedente}>Précédent</button>
-                <button onClick={pageSuivante}>Suivant</button>
+                <button data-testid="Suivant" onClick={pageSuivante}>Suivant</button>
             </div>
 
 
